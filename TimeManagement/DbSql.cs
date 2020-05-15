@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Linq;
 using System.Collections.Generic;
+using System.IO;
 
 namespace TimeManagement
 {
@@ -21,14 +22,14 @@ namespace TimeManagement
     class DbSql
     {
         private SqlConnection connection;
-        private string connectionString;
+        public string connectionString;    //////
         private SqlCommand command;
 
         public bool IsConnection { get => connection != null ? true : false; }
 
         public DbSql()
         {
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Данил\source\repos\Проекты\TimeManagement\TimeManagement\" + Rules.DataBaseName + ".mdf;Integrated Security=True";
+            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + new FileInfo(@".").FullName + @"\" + Rules.DataBaseName + ".mdf;Integrated Security=True";
             connection = new SqlConnection(connectionString);
 
             Connect(); // TODO: Добалить обработчик исключений
