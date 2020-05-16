@@ -22,14 +22,15 @@ namespace TimeManagement
     class DbSql
     {
         private SqlConnection connection;
-        public string connectionString;    //////
+        private string connectionString;
         private SqlCommand command;
 
         public bool IsConnection { get => connection != null ? true : false; }
 
         public DbSql()
         {
-            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + new FileInfo(@".").FullName + @"\" + Rules.DataBaseName + ".mdf;Integrated Security=True";
+            connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + new FileInfo(@".\..\..").FullName + @"\" + Rules.DataBaseName + ".mdf;Integrated Security=True";
+
             connection = new SqlConnection(connectionString);
 
             Connect(); // TODO: Добалить обработчик исключений

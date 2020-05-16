@@ -16,20 +16,23 @@ namespace TimeManagement
             var dataBase = new DbSql();
             #endregion
 
-            //
-
+            // Начало зоны тестирования
+            
+            listBox1.Items.Add(dataBase.AddTable());
+            listBox1.Items.Add(dataBase.CheckTableRegister(2));
             //dataBase.AddDependence(1,2,2,6);
 
             ConsoleOut(dataBase);
 
 
-            //
+            // Конец зоны тестирования
 
             #region Завершение связи с БД
             dataBase.Close();
             #endregion
         }
 
+        // Тестовые методы вывода
         void ConsoleOut(DbSql dataBase, int index = 0)
         {
             var list = dataBase.GetTableStringIds(1);
