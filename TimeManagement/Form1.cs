@@ -16,16 +16,21 @@ namespace TimeManagement
             var dataBase = new DbSql();
             #endregion
 
-            // Начало зоны тестирования
+            #region Зона тестирования
+
+            //listBox1.Items.Add(); // Вывод в формочку
+
+            // Основные команды
+            // dataBase.AddTable();
+            // dataBase.DelTable();
+            // dataBase.AddColumnInt();
+            // dataBase.DelColumn();
+            // dataBase.AddDependence();
+            // dataBase.DelDependence();
             
-            listBox1.Items.Add(dataBase.AddTable());
-            listBox1.Items.Add(dataBase.CheckTableRegister(2));
-            //dataBase.AddDependence(1,2,2,6);
+            ConsoleOut(dataBase);  // Выводит иерархию в формочку
 
-            ConsoleOut(dataBase);
-
-
-            // Конец зоны тестирования
+            #endregion
 
             #region Завершение связи с БД
             dataBase.Close();

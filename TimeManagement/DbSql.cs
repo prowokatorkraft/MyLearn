@@ -118,7 +118,7 @@ namespace TimeManagement
             return false;
         }
         /// <summary> Проверяет наличие таблицы в регистре и возвращает логическое значение </summary>
-        /// <param name="registerId"></param>
+        /// <param name="registerId"> Табличный id в регистре </param>
         /// <returns></returns>
         public bool CheckTableRegister(int registerId)
         {
@@ -133,7 +133,7 @@ namespace TimeManagement
         }
 
         /// <summary> Возвращает имя таблицы в регистре </summary>
-        /// <param name="registerId"></param>
+        /// <param name="registerId"> Табличный id в регистре </param>
         /// <returns></returns>
         public string GetTableNameRegister(int registerId)
         {
@@ -196,7 +196,7 @@ namespace TimeManagement
             return idRegister;
         }
         /// <summary> Удаляет таблицу в БД </summary>
-        /// <param name="tableName"> Табличное имя </param>
+        /// <param name="registerId"> Табличный id в регистре </param>
         public void DelTable(int registerId)
         {
             //// Проверка на запрещенные таблицы
@@ -212,7 +212,7 @@ namespace TimeManagement
             command.ExecuteNonQuery();
         }
         /// <summary> Возвращает статус таблицы </summary>
-        /// <param name="registerId"></param>
+        /// <param name="registerId"> Табличный id в регистре </param>
         public bool IsHideTable(int registerId)
         {
             command = new SqlCommand("SELECT * FROM " + Rules.RegisterTableName + " WHERE " + RegisterTableColumn.Id + " = " + registerId, connection);
@@ -225,7 +225,7 @@ namespace TimeManagement
             return tableHide;
         }
         /// <summary> Изменяет статус таблицы на противоположный </summary>
-        /// <param name="registerId"></param>
+        /// <param name="registerId"> Табличный id в регистре </param>
         public void HideTable(int registerId)
         {
             byte newStatusTable = (byte)(IsHideTable(registerId) == true ? 0 : 1);
